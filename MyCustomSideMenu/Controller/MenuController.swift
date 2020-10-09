@@ -20,10 +20,8 @@ class MenuController: UIViewController {
     private var firstMenuSection : [MenuOption]!
     private var secondMenuSection : [MenuOption]!
     private var thirdMenuSection : [MenuOption]!
-
     
     // MARK: - Init
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -31,8 +29,7 @@ class MenuController: UIViewController {
         configureTableView()
     }
     
-    // MARK: - Handlers
-    
+    // MARK: - Handlers    
     func setUpView(){
         
         firstMenuSection = [MenuOption]()
@@ -67,10 +64,12 @@ class MenuController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         // tableview constraints
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 5).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -(self.view.frame.width * 0.2)-5).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 5),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -(self.view.frame.width * 0.2)-5),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor)
+        ])
         
         // tableview raduis
         tableView.clipsToBounds = true
@@ -112,23 +111,18 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifer, for: indexPath) as! MenuOptionCell
         
         var menuOption:MenuOption!
-        
         switch indexPath.section {
         case 0:
             menuOption = MenuOption(rawValue: firstMenuSection![indexPath.row].rawValue)
-            
         case 1:
             menuOption = MenuOption(rawValue: secondMenuSection![indexPath.row].rawValue)
-            
         case 2:
             menuOption = MenuOption(rawValue: thirdMenuSection![indexPath.row].rawValue)
-            
         default:
             break
         }
         cell.descriptionLabel.text = menuOption?.description
         cell.iconImageView.image = menuOption?.image
-        
         return cell
     }
     
@@ -151,11 +145,9 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
                 
                 return lastFooterView
             }
-            
         default:
             break
         }
-
         return footerView
     }
     

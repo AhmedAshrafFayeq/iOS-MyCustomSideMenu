@@ -31,28 +31,26 @@ class MenuOptionCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         backgroundColor = .white
         selectionStyle = .none
         
         addSubview(iconImageView)
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive = true
-        iconImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        iconImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        
         addSubview(descriptionLabel)
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 12).isActive = true
+        NSLayoutConstraint.activate([
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20),
+            iconImageView.widthAnchor.constraint(equalToConstant: 20),
+            
+            descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            descriptionLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 12)
+        ])
         descriptionLabel.textColor = .darkGray
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }
-

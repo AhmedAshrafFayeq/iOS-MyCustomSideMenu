@@ -16,8 +16,8 @@ class ContainerController: UIViewController {
     private var tap: UITapGestureRecognizer!
     let homeController      = HomeController()
     private var isExpanded  = false
-    // MARK: - Init
     
+    // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
         tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -41,7 +41,6 @@ class ContainerController: UIViewController {
     }
     
     // MARK: - Handlers
-    
     func configureHomeController() {
         homeController.delegate = self
         centerController        = UINavigationController(rootViewController: homeController)
