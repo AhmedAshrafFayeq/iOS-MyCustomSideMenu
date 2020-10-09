@@ -6,4 +6,6 @@
 //  Copyright © 2020 Ahmed Fayek. All rights reserved.
 //
 
-import Foundation
+protocol MenuSideBarDelegate {
+    func handleMenuToggle(forMenuOption menuOption: MenuOption?)
+}
